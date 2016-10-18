@@ -1,22 +1,23 @@
-<ion-view view-title="News">
+<ion-view view-title="Trending News">
+	<ion-nav-buttons side="secondary">
+    <div class="buttons">
+      <button class="button button-icon icon ion-ios-search-strong" ui-sref="app.seachShows">
+      </button>
+    </div>
+  </ion-nav-buttons>
   	<ion-content>
 	  	<ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true">
-		  <ion-slide>
+		  <ion-slide ng-repeat="news in headlines.latestnewsObj.articles">
 		    <div class="box">
 		    	<div class="list card">
 					<div class="item item-avatar">
 						<img src="img/ionic.png">
-						<h2>Virat Kohli</h2>
+						<h2>{{news.title}}</h2>
 						<p>November 05, 1955</p>
 					</div>
 					<div class="item item-body">
-						<img class="full-image" src="http://img01.ibnlive.in/ibnlive/uploads/2016/10/virat_1810getty_875.jpg">
-						<p>
-						This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-						the content is from a card-body consisting of an image and paragraph text. The footer
-						consists of tabs, icons aligned left, within the card-footer.
-						This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-						</p>
+						<img class="full-image" ng-src="{{news.urlToImage}}">
+						<p>{{news.description}}</p>
 						<p>
 							<a href="#" class="subdued">1 Like</a>
 							<a href="#" class="subdued">5 Comments</a>
@@ -25,7 +26,8 @@
 				</div>	
 		    </div>
 		  </ion-slide>
-		  <ion-slide>
+		  
+		 <!--  <ion-slide>
 		    <div class="box">
 		    	<div class="list card">
 					<div class="item item-avatar">
@@ -70,7 +72,7 @@
 					</div>
 				</div>
 		    </div>
-		  </ion-slide>
+		  </ion-slide> -->
 		</ion-slide-box>
   </ion-content>
 </ion-view>

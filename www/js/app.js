@@ -77,10 +77,17 @@ angular.module('newsapp', ['ionic'])
         controller: 'homeCtrl'
       }
     },
-    // resolve: {
+    resolve: {
 
-    //   lastestNews: ['newsService']
-    // }
+      lastestNews: ['newsService', function(newsService) {
+
+        var NewsService = newsService;
+
+        NewsService.getLatestNews();
+
+        return NewsService;
+      }]
+    }
   });
 
   

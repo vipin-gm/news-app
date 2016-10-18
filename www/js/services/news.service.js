@@ -4,10 +4,11 @@ angular.module('newsapp')
 	console.log("from news service");
 
 	var Service = {};
+
+	Service.latestnewsObj = {};
+
 	var API_KEY = '6683dcf8e155464482c3fc2927e406ac'
 	var apiUrl = 'https://newsapi.org/v1/articles?source=the-times-of-india&sortBy=latest&apiKey='+API_KEY;
-
-	console.log(apiUrl);
 
 	Service.getLatestNews = function() {
 
@@ -24,11 +25,13 @@ angular.module('newsapp')
 
 		    // var popularShows = response.data.results;
 
-		    // Service.popularSeries = response.data.results; 
+		    Service.latestnewsObj = response.data;
 
 		  }, function errorCallback(response) {
 			
 			console.log("[Error Occured]: ", response);		    		
 		  });
 	};
+
+	return Service;
 });
