@@ -1,12 +1,12 @@
 <ion-view view-title="Trending News">
 	<ion-nav-buttons side="secondary">
     <div class="buttons">
-      <button class="button button-icon icon ion-ios-search-strong" ui-sref="app.seachShows">
+      <button class="button button-icon icon" ng-class="sliderStatus?'ion-ios-play-outline' : 'ion-ios-pause-outline'" ng-click="toggleSliderStatus()">
       </button>
     </div>
   </ion-nav-buttons>
   	<ion-content>
-	  	<ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true">
+	  	<ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true" delegate-handle="news-viewer">
 		  <ion-slide ng-repeat="news in headlines.latestnewsObj.articles">
 		    <div class="box">
 		    	<div class="list card">
