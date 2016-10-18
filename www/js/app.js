@@ -70,6 +70,7 @@ angular.module('newsapp', ['ionic'])
   })
 
   .state('app.home', {
+    cache:false,
     url: '/home',
     views: {
       'menuContent': {
@@ -84,6 +85,28 @@ angular.module('newsapp', ['ionic'])
         var NewsService = newsService;
 
         NewsService.getLatestNews();
+
+        return NewsService;
+      }]
+    }
+  })
+
+  .state('app.financial',{
+    cache:false,
+    url: '/ftnews',
+    views: {
+      'menuContent': {
+        templateUrl: '/templates/home.html',
+        controller: 'homeCtrl'
+      }
+    },
+    resolve: {
+
+      lastestNews: ['newsService', function(newsService) {
+
+        var NewsService = newsService;
+
+        NewsService.getFinalcialTimesNews();
 
         return NewsService;
       }]
