@@ -41,7 +41,7 @@ angular.module('newsapp')
   };
 })
 
-.controller('PlaylistsCtrl', function($scope, newsService, $timeout, $ionicSlideBoxDelegate, financialNews) {
+.controller('PlaylistsCtrl', function($scope, newsService, $timeout, $ionicSlideBoxDelegate, financialNews, $rootScope) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
@@ -54,13 +54,19 @@ console.log(financialNews);
   $scope.testData = financialNews;
   $scope.sliderStatus = true;
 
-  $timeout(function() {
+  $rootScope.$on('apicalldone', function() {
 
-    // $scope.headlines = lastestNews; 
+    console.log("API call Done");
 
-     // $ionicSlideBoxDelegate.$getByHandle('image-viewer').update();
-     $ionicSlideBoxDelegate.update();
-  },1000);
+    $ionicSlideBoxDelegate.update();
+  });
+  // $timeout(function() {
+
+  //   // $scope.headlines = lastestNews; 
+
+  //    // $ionicSlideBoxDelegate.$getByHandle('image-viewer').update();
+  //    $ionicSlideBoxDelegate.update();
+  // },1000);
 
   $scope.toggleSliderStatus = function() {
 

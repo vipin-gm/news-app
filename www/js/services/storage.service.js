@@ -10,7 +10,7 @@ angular.module('newsapp')
 	};
 
 	Service.get = function (name) {
-		console.log(angular.fromJson(localStorage.getItem(name)))
+
 		return angular.fromJson(localStorage.getItem(name));
 	};
 

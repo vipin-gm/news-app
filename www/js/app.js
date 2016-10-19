@@ -6,7 +6,7 @@
 // 'newsapp.controllers' is found in controllers.js
 angular.module('newsapp', ['ionic'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $state, storageService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,17 +19,25 @@ angular.module('newsapp', ['ionic'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    var storedInterest = storageService.get("interest");
+console.log(storedInterest.length);
+console.log($state)
+    if (storedInterest.length ) {
+
+      $state.go('app.allnews');
+    }
   });
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-    .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
+  .state('app', {
+      url: '/app',
+      abstract: true,
+      templateUrl: 'templates/menu.html',
+      controller: 'AppCtrl'
   })
 
   .state('app.search', {
@@ -42,6 +50,7 @@ angular.module('newsapp', ['ionic'])
   })
 
   .state('app.interest', {
+      cache:false,
       url: '/interest',
       views: {
         'menuContent': {
@@ -49,38 +58,40 @@ angular.module('newsapp', ['ionic'])
           controller: 'interestCtrl'
         }
       }
-    })
+  })
 
-  .state('app.browse', {
-      url: '/browse',
+  .state('app.allnews', {
+      cache:false,
+      url: '/allnews',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/allnews.html',
+          controller: 'allNewsCtrl'
         }
       }
-    })
+  })
 
-    .state('app.playlists', {
-      url: '/playlists',
-      cache: false,
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      },
-      resolve: {
+  .state('app.playlists', {
+    url: '/playlists',
+    // cache: false,
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/playlists.html',
+        controller: 'PlaylistsCtrl'
+      }
+    },
+    resolve: {
 
-      financialNews: ['newsService', function(newsService) {
+    financialNews: ['newsService', function(newsService) {
 
-        var NewsService = newsService;
+      var NewsService = newsService;
 
-        NewsService.getFinalcialTimesNews();
+      NewsService.getFinalcialTimesNews();
 
-        return NewsService;
-      }]
-    }
-    })
+      return NewsService;
+    }]
+  }
+  })
 
   .state('app.single', {
     url: '/playlists/:playlistId',
@@ -93,7 +104,7 @@ angular.module('newsapp', ['ionic'])
   })
 
   .state('app.home', {
-    cache:false,
+    // cache:false,
     url: '/home',
     views: {
       'menuContent': {

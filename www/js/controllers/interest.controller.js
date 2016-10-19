@@ -1,8 +1,11 @@
 angular.module('newsapp')
 
-.controller('interestCtrl', function($scope, newsService, storageService){
+.controller('interestCtrl', function($scope, newsService, storageService, newslistService, $timeout, $state){
+
 
 	var StorageService = storageService;
+
+	var NewslistService = newslistService;
 
 	var storedInterest = StorageService.get("interest");
 
@@ -20,20 +23,32 @@ angular.module('newsapp')
 
 		$scope.interestList = storedInterest;
 	}
-
 	else {
 
 		$scope.interestList = interestList;
 	}
 
-	// console.log($scope.interest.checked);
-
 	$scope.toggleInterest = function(interest) {
 
 		interest.checked = !interest.checked;
 
-		console.log($scope.interestList);
-
 		StorageService.set("interest", $scope.interestList);
-	}
+	};
+
+	$scope.loadContents = function() {
+
+		// var storedInterest = StorageService.get("interest");
+
+		// NewslistService.callAllInterestAPI(storedInterest);
+
+		// console.log(NewslistService);
+
+		// $timeout(function() {
+
+		// 	console.log(NewslistService.getAllNews());
+		// }, 4000);
+
+		// $scope.interestNewsList = NewslistService.getAllNews();
+	};
+
 })

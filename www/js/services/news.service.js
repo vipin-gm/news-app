@@ -1,6 +1,6 @@
 angular.module('newsapp')
 
-.service('newsService', function($http) {
+.service('newsService', function($http, $rootScope) {
 	console.log("from news service");
 
 	var Service = {};
@@ -37,6 +37,8 @@ angular.module('newsapp')
 
 		    Service.latestnewsObj = response.data;
 
+		    $rootScope.$emit('apicalldone');
+
 		  }, function errorCallback(response) {
 			
 			console.log("[Error Occured]: ", response);		    		
@@ -64,6 +66,8 @@ angular.module('newsapp')
 		    // Service.financialTimesNews = response.data;
 
 		    Service.fiancialNewsObj = response.data;
+
+		    $rootScope.$emit('apicalldone');
 
 		  }, function errorCallback(response) {
 			

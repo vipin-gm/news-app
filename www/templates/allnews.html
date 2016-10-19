@@ -1,0 +1,33 @@
+<ion-view view-title="All News">
+	<ion-nav-buttons side="secondary">
+    <div class="buttons">
+      <button class="button button-icon icon" ng-class="!sliderStatus?'ion-ios-play-outline' : 'ion-ios-pause-outline'" ng-click="toggleSliderStatus()">
+      </button>
+    </div>
+  </ion-nav-buttons>
+  	<ion-content>
+	  	<ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true" delegate-handle="news-viewer" show-pager=false>
+		  <ion-slide ng-repeat="news in interestNewsList[0].politicsNews1.concat(interestNewsList[0].politicsNews2)">
+		    <div class="box" >
+		    	<div class="list card">
+					<div class="item item-avatar">
+						<img ng-src="img/toi-news.png">
+						<div>
+							<h2>{{news.title}}</h2>
+							<!-- <p>Source: {{headlines.latestnewsObj.source == 'the-times-of-india'?'Time Of India':'Financial Times'}}</p> -->
+						</div>
+					</div>					
+					<div class="item item-body row responsive-sm" >
+						<img class="full-image col col-33" ng-src="{{news.urlToImage}}">
+						<p class="col">{{news.description}}</p>
+						<p>
+							<!-- <a href="#" class="subdued">Source: {{headlines.latestnewsObj.source == 'the-times-of-india'?'Time Of India':N/A}}</a> -->
+							<!-- <a href="#" class="subdued">{{headlines.latestnewsObj.source}}</a> -->
+						</p>
+					</div>
+				</div>	
+		    </div>
+		  </ion-slide>  
+		</ion-slide-box>
+  </ion-content>
+</ion-view>
