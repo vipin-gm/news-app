@@ -7,7 +7,13 @@ angular.module('newsapp')
 
 	Service.latestnewsObj = {};
 
-	Service.financialTimesNews = {};
+	Service.fiancialNewsObj = {};
+
+	Service.init = function() {
+
+		Service.getLatestNews();
+		Service.getFinalcialTimesNews();
+	}
 
 	var API_KEY = '6683dcf8e155464482c3fc2927e406ac';
 
@@ -57,7 +63,7 @@ angular.module('newsapp')
 
 		    // Service.financialTimesNews = response.data;
 
-		    Service.latestnewsObj = response.data;
+		    Service.fiancialNewsObj = response.data;
 
 		  }, function errorCallback(response) {
 			

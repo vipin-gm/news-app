@@ -1,0 +1,13 @@
+<ion-view view-title="Test">
+	<ion-nav-buttons side="secondary">
+    <div class="buttons">
+      <button class="button button-icon icon" ng-class="!sliderStatus?'ion-ios-play-outline' : 'ion-ios-pause-outline'" ng-click="toggleSliderStatus()">
+      </button>
+    </div>
+  </ion-nav-buttons>
+  	<ion-content>
+  	<p ng-repeat="news in testData.fiancialNewsObj.articles">{{news.title}}</p>
+ </ion-content>
+ </ion-view> 
+
+ 	

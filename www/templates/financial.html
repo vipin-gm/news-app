@@ -7,17 +7,17 @@
   </ion-nav-buttons>
   	<ion-content>
 	  	<ion-slide-box auto-play="true" does-continue="true" delegate-handle="news-viewer" show-pager=false>
-		  <ion-slide ng-repeat="news in testData.fiancialNewsObj.articles" >
-		    <div class="box">
+		  <ion-slide >
+		    <div class="box" ng-repeat="news in financialNew.fiancialNewsObj.articles">
 		    	<div class="list card">
 					<div class="item item-avatar">
 						<img ng-src="img/ft-news.png">
 						<h2>{{news.title}}</h2>
 						<p>Source: Financial Times</p>
 					</div>
-					<div class="item item-body row responsive-sm">
-						<img class="full-image col col-33" ng-src="{{news.urlToImage}}">
-						<p class="row">{{news.description}}</p>
+					<div class="item item-body">
+						<img style="max-width:250px;height:auto;" ng-src="{{news.urlToImage}}">
+						<p>{{news.description}}</p>
 						<p>
 							<!-- <a href="#" class="subdued">Source: {{headlines.latestnewsObj.source == 'the-times-of-india'?'Time Of India':N/A}}</a> -->
 							<!-- <a href="#" class="subdued">{{headlines.latestnewsObj.source}}</a> -->
@@ -29,4 +29,3 @@
 		</ion-slide-box>
   </ion-content>
 </ion-view>
-

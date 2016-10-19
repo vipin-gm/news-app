@@ -1,6 +1,6 @@
 angular.module('newsapp')
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, newsService) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -11,7 +11,7 @@ angular.module('newsapp')
 
   // Form data for the login modal
   $scope.loginData = {};
-
+  newsService.init();
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
     scope: $scope
@@ -41,7 +41,7 @@ angular.module('newsapp')
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
+.controller('PlaylistsCtrl', function($scope, newsService, $timeout, $ionicSlideBoxDelegate, financialNews) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
@@ -50,6 +50,32 @@ angular.module('newsapp')
     { title: 'Rap', id: 5 },
     { title: 'Cowbell', id: 6 }
   ];
+console.log(financialNews);
+  $scope.testData = financialNews;
+  $scope.sliderStatus = true;
+
+  $timeout(function() {
+
+    // $scope.headlines = lastestNews; 
+
+     // $ionicSlideBoxDelegate.$getByHandle('image-viewer').update();
+     $ionicSlideBoxDelegate.update();
+  },1000);
+
+  $scope.toggleSliderStatus = function() {
+
+    if ($scope.sliderStatus) {
+
+      $ionicSlideBoxDelegate.$getByHandle('news-viewer').stop();  
+    }
+
+    else {
+
+      $ionicSlideBoxDelegate.$getByHandle('news-viewer').start(); 
+    }
+
+    $scope.sliderStatus = !$scope.sliderStatus;
+  };
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {

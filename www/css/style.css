@@ -1,1 +1,9 @@
 /* Empty. Add your own CSS if you like */
+
+.item-body p {
+	margin-top:	0px !important;
+}
+
+.full-image {
+	height:	100% !important;
+}

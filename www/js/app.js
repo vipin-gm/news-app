@@ -51,12 +51,24 @@ angular.module('newsapp', ['ionic'])
     })
     .state('app.playlists', {
       url: '/playlists',
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: 'templates/playlists.html',
           controller: 'PlaylistsCtrl'
         }
-      }
+      },
+      resolve: {
+
+      financialNews: ['newsService', function(newsService) {
+
+        var NewsService = newsService;
+
+        NewsService.getFinalcialTimesNews();
+
+        return NewsService;
+      }]
+    }
     })
 
   .state('app.single', {
@@ -92,17 +104,17 @@ angular.module('newsapp', ['ionic'])
   })
 
   .state('app.financial',{
-    cache:false,
+    // cache:false,
     url: '/ftnews',
     views: {
       'menuContent': {
-        templateUrl: '/templates/home.html',
-        controller: 'homeCtrl'
+        templateUrl: '/templates/financial.html',
+        controller: 'ftCtrl'
       }
     },
     resolve: {
 
-      lastestNews: ['newsService', function(newsService) {
+      financialNews: ['newsService', function(newsService) {
 
         var NewsService = newsService;
 
@@ -111,9 +123,18 @@ angular.module('newsapp', ['ionic'])
         return NewsService;
       }]
     }
+  })
+
+  .state('app.interest',{
+    url: '/interest',
+    views: {
+      'menuContent': {
+        templateUrl:'/templates/interest.html',
+        controller: 'interestCtrl'
+      }
+    }
   });
 
-  
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+  $urlRouterProvider.otherwise('/app/playlists');
 });
