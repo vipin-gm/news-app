@@ -1,0 +1,12 @@
+<ion-view view-title="Select Topics">
+  	<ion-content>
+  	 <div class="list">
+        <ion-toggle ng-repeat="interest in interestList"
+                    ng-checked="interest.checked"
+                    ng-click="toggleInterest(interest)">
+          {{ interest.topic }}
+        </ion-toggle>
+    </div>    
+ </ion-content>
+ </ion-view> 
+

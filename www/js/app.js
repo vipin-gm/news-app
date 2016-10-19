@@ -41,6 +41,16 @@ angular.module('newsapp', ['ionic'])
     }
   })
 
+  .state('app.interest', {
+      url: '/interest',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/interest.html',
+          controller: 'interestCtrl'
+        }
+      }
+    })
+
   .state('app.browse', {
       url: '/browse',
       views: {
@@ -49,6 +59,7 @@ angular.module('newsapp', ['ionic'])
         }
       }
     })
+
     .state('app.playlists', {
       url: '/playlists',
       cache: false,
@@ -123,18 +134,8 @@ angular.module('newsapp', ['ionic'])
         return NewsService;
       }]
     }
-  })
-
-  .state('app.interest',{
-    url: '/interest',
-    views: {
-      'menuContent': {
-        templateUrl:'/templates/interest.html',
-        controller: 'interestCtrl'
-      }
-    }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/interest');
 });

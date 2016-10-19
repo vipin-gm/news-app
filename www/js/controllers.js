@@ -11,7 +11,7 @@ angular.module('newsapp')
 
   // Form data for the login modal
   $scope.loginData = {};
-  newsService.init();
+  // newsService.init();
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
     scope: $scope
