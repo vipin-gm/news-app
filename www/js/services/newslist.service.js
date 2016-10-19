@@ -165,12 +165,10 @@ angular.module('newsapp')
 			}
 		}
 
-
-
 		// var newsCollection = News[0].politicsNews1.concat(News[0].politicsNews2,News[0].politicsNews3);
 
 		var newsCollection = politicsNewsCol.concat(entertainNewsCol);		
-console.log("newsCollection>>>>>>>>>",newsCollection);
+
 		return newsCollection;
 	};
 

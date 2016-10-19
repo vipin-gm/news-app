@@ -6,7 +6,7 @@
 // 'newsapp.controllers' is found in controllers.js
 angular.module('newsapp', ['ionic'])
 
-.run(function($ionicPlatform, $state, storageService) {
+.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -18,14 +18,6 @@ angular.module('newsapp', ['ionic'])
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
-    }
-
-    var storedInterest = storageService.get("interest");
-console.log(storedInterest.length);
-console.log($state)
-    if (storedInterest.length ) {
-
-      $state.go('app.allnews');
     }
   });
 })

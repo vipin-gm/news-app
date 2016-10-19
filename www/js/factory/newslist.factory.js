@@ -54,8 +54,6 @@ angular.module('newsapp')
 
 			}).then(function successCallback(response) {
 
-				console.log(response.data.articles);
-
 					for (var i=0; i<response.data.articles.length; i++) {
 
 						response.data.articles[i].favStatus = false;

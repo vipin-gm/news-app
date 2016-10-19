@@ -1,7 +1,6 @@
 angular.module('newsapp')
 
 .service('newsService', function($http, $rootScope) {
-	console.log("from news service");
 
 	var Service = {};
 
