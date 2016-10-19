@@ -10,6 +10,10 @@ angular.module('newsapp')
 
 	var News = [];
 
+	var allNewsCollection = [];
+
+	var testArray = [];
+
 	Service.getPoliticsNews = function() {
 
 		var politicsNews1;
@@ -29,7 +33,7 @@ angular.module('newsapp')
 			apiUrl: 'https://newsapi.org/v1/articles?source=the-hindu&sortBy=top&apiKey='+API_KEY,
 			interest: 'Politics',
 			source: 'The Hindu',
-			source_logo: 'hindu-logo.png'
+			source_logo: 'img/hindu-logo.png'
 		};
 
 		var politics_source_3 = {
@@ -134,8 +138,40 @@ angular.module('newsapp')
 	};
 
 	Service.getAllNews = function() {
-// console.log(News.split(','))
-		return News;
+
+		allNewsCollection.length = 0;
+
+		var politicsNewsCol,
+		entertainNewsCol;
+
+		for (var i=0; i<News.length; i++) {
+
+			if (News[i].type == "Politics") {
+
+				politicsNewsCol = News[i].politicsNews1.concat(News[i].politicsNews2,News[i].politicsNews3);
+
+				break;		
+			}
+		}
+
+
+		for (var i=0; i<News.length; i++) {
+
+			if (News[i].type == "Entertainment") {
+
+				entertainNewsCol = News[i].entertainmentNews1.concat(News[i].entertainmentNews2,News[i].entertainmentNews3);
+
+				break;		
+			}
+		}
+
+
+
+		// var newsCollection = News[0].politicsNews1.concat(News[0].politicsNews2,News[0].politicsNews3);
+
+		var newsCollection = politicsNewsCol.concat(entertainNewsCol);		
+console.log("newsCollection>>>>>>>>>",newsCollection);
+		return newsCollection;
 	};
 
 	Service.reset = function() {
