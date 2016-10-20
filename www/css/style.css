@@ -4,6 +4,7 @@
 	margin-top:	0px !important;
 }
 
-/*.full-image {
-	height:	100% !important;
-}*/
+.full-image {
+	max-height: 200px !important;
+    min-height: 150px !important;
+}
