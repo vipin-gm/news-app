@@ -1,3 +1,11 @@
+/**
+ * @ngdoc function
+ * @name newsapp.controller:interestCtrl
+ * @description
+ * # interestCtrl
+ * Controller of the newsapp
+ */
+ 
 angular.module('newsapp')
 
 .controller('interestCtrl', function($scope, newsService, storageService, newslistService, $timeout, $state){

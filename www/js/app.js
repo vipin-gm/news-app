@@ -6,7 +6,7 @@
 // 'newsapp.controllers' is found in controllers.js
 angular.module('newsapp', ['ionic'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, storageService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,6 +19,13 @@ angular.module('newsapp', ['ionic'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    
+    // // [SET] Slide polling time
+
+    // if (!storageService.get('slidePollTime')) {
+
+    //       storageService.set('slidePollTime', 4000);
+    // }
   });
 })
 
@@ -61,6 +68,17 @@ angular.module('newsapp', ['ionic'])
           controller: 'allNewsCtrl'
         }
       }
+  })
+
+  .state('app.setting', {
+    cache:false,
+    url: '/setting',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/setting.html',
+        controller: 'settingCtrl'
+      }
+    }
   })
 
   .state('app.playlists', {

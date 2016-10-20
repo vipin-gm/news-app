@@ -1,3 +1,11 @@
+/**
+ * @ngdoc function
+ * @name newsapp.controller:homeCtrl
+ * @description
+ * # homeCtrl
+ * Controller of the newsapp
+ */
+ 
 angular.module('newsapp') 
 
 .controller('homeCtrl', function($scope, $ionicSlideBoxDelegate, $timeout, newsService, $rootScope) {

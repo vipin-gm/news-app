@@ -1,3 +1,11 @@
+/**
+ * @ngdoc function
+ * @name newsapp.controller:ftCtrl
+ * @description
+ * # ftCtrl
+ * Controller of the newsapp
+ */
+ 
 angular.module('newsapp') 
 
 .controller('ftCtrl', function($scope, newsService, $ionicSlideBoxDelegate, $timeout) {

@@ -22,6 +22,11 @@ angular.module('newsapp')
 	// Call all the API which are present in interest list
 	NewslistService.callAllInterestAPI(storedInterest);
 
+	var storedSlideTime = storageService.get('slideTimer');
+	$scope.slideTimer = storedSlideTime;
+	$ionicSlideBoxDelegate.update();
+	
+
 	/**
 	 * @name shuffle
 	 * @description Randamise the array list
@@ -51,10 +56,27 @@ angular.module('newsapp')
 
 		var newsList = NewslistService.getAllNews();
 
-		$scope.interestNewsList = shuffle(newsList);	
+		$scope.interestNewsList = shuffle(newsList);
+
+		// [GET] The stored slide time
+		// var storedSlideTime = storageService.get('slideTimer');
+
+		// $scope.slideTimer = 300;
+
+		// console.log($scope.slideTimer);	
+
+		$ionicSlideBoxDelegate.loop(true);
+		// $ionicSlideBoxDelegate.next($scope.slideTimer);
 
 		$ionicSlideBoxDelegate.update();
 	});
+
+	$scope.slideHasChanged = function(index) {
+
+		// $ionicSlideBoxDelegate.next([$scope.slideTimer]);
+
+		// console.log(index)
+	}
 
 	/**
 	 * @name toggleSliderStatus
