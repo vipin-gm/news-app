@@ -154,9 +154,82 @@ angular.module('newsapp')
 
 	Service.getFinanceNews = function() {
 
+		var financeNews1;
+		var financeNews2;
+		var financeNews3;
+
+		var finance_source_1 = {
+
+			apiUrl: 'https://newsapi.org/v1/articles?source=financial-times&sortBy=latest&apiKey='+API_KEY,
+			interest: 'Financial',
+			source: 'Financial Times',
+			source_logo: 'img/ft-news.png'
+		};
+
+		var finance_source_2 = {
+
+			apiUrl: 'https://newsapi.org/v1/articles?source=business-insider-uk&sortBy=top&apiKey='+API_KEY,
+			interest: 'Financial',
+			source: 'Business Insider',
+			source_logo: 'img/bi-logo.png'
+		};
+
+		var finance_source_3 = {
+
+			apiUrl: 'https://newsapi.org/v1/articles?source=cnbc&sortBy=top&apiKey='+API_KEY,
+			interest: 'Financial',
+			source: 'CNBC',
+			source_logo: 'img/cnbc-logo.png'
+		};
+
+		financeNews1 = new newslistFactory(finance_source_1);
+		financeNews2 = new newslistFactory(finance_source_2);
+		financeNews3 = new newslistFactory(finance_source_3)
+
+		var financeCollection = {
+
+			type			: 'Financial',
+			financeNews1	: financeNews1.news,
+			financeNews2	: financeNews2.news,
+			financeNews3	: financeNews3.news
+		};
+
+		News.push(financeCollection);
 	};
 
 	Service.getGeographyNews = function() {
+
+		var geographyNews1;
+		var geographyNews2;
+		var geographyNews3;
+
+		var geography_source_1 = {
+
+			apiUrl: 'https://newsapi.org/v1/articles?source=national-geographic&sortBy=top&apiKey='+API_KEY,
+			interest: 'Geography',
+			source: 'National Geographic',
+			source_logo: 'img/natgeo-logo.png'
+		};
+
+		var geography_source_2 = {
+
+			apiUrl: 'https://newsapi.org/v1/articles?source=new-scientist&sortBy=top&apiKey='+API_KEY,
+			interest: 'Geography',
+			source: 'New Scientist',
+			source_logo: 'img/newsci-logo.png'
+		};
+
+		geographyNews1 = new newslistFactory(geography_source_1);
+		geographyNews2 = new newslistFactory(geography_source_2);
+
+		var sportsCollection = {
+
+			type			: 'Geography',
+			geographyNews1	: geographyNews1.news,
+			geographyNews2	: geographyNews2.news
+		};
+
+		News.push(sportsCollection);
 
 	};
 
@@ -206,7 +279,7 @@ angular.module('newsapp')
 	};
 
 	Service.callAllInterestAPI = function(interestList) {
-console.log(interestList[i]);
+
 		for (var i=0; i<interestList.length; i++) {
 
 			if (interestList[i].topic == 'Politics' && interestList[i].checked) {
@@ -228,6 +301,16 @@ console.log(interestList[i]);
 
 				Service.getSportsNews();
 			}
+
+			if (interestList[i].topic == 'Financial' && interestList[i].checked) {
+
+				Service.getFinanceNews();
+			}
+
+			if (interestList[i].topic == 'Geography' && interestList[i].checked) {
+
+				Service.getGeographyNews();
+			}
 		}
 	};
 
@@ -240,7 +323,9 @@ console.log(interestList[i]);
 		var politicsNewsCol,
 			entertainNewsCol,
 			techNewsCol,
-			sportsNewsCol;
+			sportsNewsCol,
+			financeNewsCol,
+			geographyNewsCol;
 
 		for (var i=0; i<News.length; i++) {
 
@@ -283,9 +368,29 @@ console.log(interestList[i]);
 			}
 		}
 
+		for (var i=0; i<News.length; i++) {
+
+			if (News[i].type == "Financial") {
+
+				financeNewsCol = News[i].financeNews1.concat(News[i].financeNews2,News[i].financeNews3);
+
+				break;		
+			}
+		}
+
+		for (var i=0; i<News.length; i++) {
+
+			if (News[i].type == "Geography") {
+
+				geographyNewsCol = News[i].geographyNews1.concat(News[i].geographyNews2);
+
+				break;		
+			}
+		}
+
 		// var newsCollection = News[0].politicsNews1.concat(News[0].politicsNews2,News[0].politicsNews3);
 
-		var fullNewsCol = newsCollection.concat(politicsNewsCol,entertainNewsCol, techNewsCol,sportsNewsCol);		
+		var fullNewsCol = newsCollection.concat(politicsNewsCol,entertainNewsCol, techNewsCol,sportsNewsCol,financeNewsCol, geographyNewsCol);		
 
 		return fullNewsCol;
 	};
