@@ -11,7 +11,7 @@
 	  				 	does-continue="true"
 	  				 	delegate-handle="news-viewer" 
 	  				 	show-pager=false>
-		  <ion-slide ng-repeat="news in interestNewsList track by $index">
+		  <ion-slide ng-repeat="news in interestNewsList track by $index" ng-if="news.title">
 		    <div class="box" >
 		    	<div class="list card">
 					<div class="item item-avatar">
