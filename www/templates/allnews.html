@@ -11,7 +11,7 @@
 	  				 	does-continue="true"
 	  				 	delegate-handle="news-viewer" 
 	  				 	show-pager=false
-	  				 	slide-interval="{{slideTimer || 3000}}">
+	  				 	slide-interval="{{slideTimer}}">
 		  <ion-slide ng-repeat="news in interestNewsList track by $index" ng-if="news.title">
 		    <div class="box" >
 		    	<div class="list card">

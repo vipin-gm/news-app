@@ -19,13 +19,6 @@ angular.module('newsapp', ['ionic'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-    
-    // // [SET] Slide polling time
-
-    // if (!storageService.get('slidePollTime')) {
-
-    //       storageService.set('slidePollTime', 4000);
-    // }
   });
 })
 

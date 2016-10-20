@@ -19,12 +19,23 @@ angular.module('newsapp')
 	// [GET] The stored interest list
 	var storedInterest = storageService.get("interest");
 
+	// [GET] The stored slide time	
+	var storedSlideTime = storageService.get('slideTimer');
+
+	// [GET] The stores poll timer
+	var storedPollTime = storageService.get('pollTimer');
+
 	// Call all the API which are present in interest list
 	NewslistService.callAllInterestAPI(storedInterest);
 
-	var storedSlideTime = storageService.get('slideTimer');
-	$scope.slideTimer = storedSlideTime;
+	
+	// Update the slider timer
+	$scope.slideTimer = storedSlideTime || 3000;
 	$ionicSlideBoxDelegate.update();
+	
+
+	// Update the poll timer
+	$scope.pollTimer = storedPollTime || 600000;
 	
 
 	/**
@@ -58,18 +69,22 @@ angular.module('newsapp')
 
 		$scope.interestNewsList = shuffle(newsList);
 
-		// [GET] The stored slide time
-		// var storedSlideTime = storageService.get('slideTimer');
-
-		// $scope.slideTimer = 300;
-
-		// console.log($scope.slideTimer);	
-
 		$ionicSlideBoxDelegate.loop(true);
-		// $ionicSlideBoxDelegate.next($scope.slideTimer);
 
 		$ionicSlideBoxDelegate.update();
 	});
+
+	// Poll the whole results after the specified time
+	// $timeout(function() {
+
+	// 	NewslistService.reset();
+
+	// 	var newsList = NewslistService.getAllNews();
+
+	// 	$scope.interestNewsList = shuffle(newsList);
+
+	// 	$ionicSlideBoxDelegate.update();
+	// }, $scope.pollTimer);
 
 	$scope.slideHasChanged = function(index) {
 
