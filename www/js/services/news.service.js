@@ -30,13 +30,12 @@ angular.module('newsapp')
 		}).then(function successCallback(response) {
 		    
 		    console.log(response);
-		    // Service.getFinalcialTimesNews();
-
-		    // var popularShows = response.data.results;
 
 		    Service.latestnewsObj = response.data;
 
 		    $rootScope.$emit('apicalldone');
+
+		     $rootScope.$emit('loading:hide');
 
 		  }, function errorCallback(response) {
 			
@@ -60,13 +59,10 @@ angular.module('newsapp')
 		    
 		    console.log(response);
 
-		    // var popularShows = response.data.results;
-
-		    // Service.financialTimesNews = response.data;
-
 		    Service.fiancialNewsObj = response.data;
 
 		    $rootScope.$emit('apicalldone');
+		    $rootScope.$emit('loading:hide');
 
 		  }, function errorCallback(response) {
 			

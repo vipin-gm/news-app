@@ -6,7 +6,7 @@
 // 'newsapp.controllers' is found in controllers.js
 angular.module('newsapp', ['ionic'])
 
-.run(function($ionicPlatform, storageService) {
+.run(function($ionicPlatform, storageService, $rootScope, $ionicLoading, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -20,6 +20,41 @@ angular.module('newsapp', ['ionic'])
       StatusBar.styleDefault();
     }
   });
+
+
+  $rootScope.$on('loading:show', function () {
+
+    $ionicLoading.show({
+        template: '<ion-spinner></ion-spinner> Loading ...'
+    })
+  });
+
+  $rootScope.$on('loading:hide', function () {
+
+    $ionicLoading.hide();
+  });
+
+  $rootScope.$on('$stateChangeStart', function () {
+
+    console.log('Loading ...');
+    $rootScope.$broadcast('loading:show');
+  });
+
+  $rootScope.$on('$stateChangeSuccess', function () {
+
+    console.log('done');
+    console.log($state.current);
+    if($state.current.name === 'app.interest') {
+
+      $rootScope.$broadcast('loading:hide');
+    }
+
+    if ($state.current.name === 'app.setting' ) {
+
+        $rootScope.$broadcast('loading:hide');
+    }
+  });
+
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -123,7 +158,7 @@ angular.module('newsapp', ['ionic'])
 
         NewsService.getLatestNews();
 
-        return NewsService;
+        return NewsService.getLatestNews();
       }]
     }
   })

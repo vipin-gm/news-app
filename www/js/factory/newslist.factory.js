@@ -64,7 +64,12 @@ angular.module('newsapp')
 						self.news.push(response.data.articles[i]);
 					}
 
-					$rootScope.$emit('apicalldone');
+					$rootScope.numApiCallMade++;
+
+					if ($rootScope.numApiCallMade == $rootScope.numCallToMake)	{
+						
+						$rootScope.$emit('apicalldone');
+					}
 
 			}, function errorCallback(response) {
 

@@ -8,8 +8,7 @@
  
 angular.module('newsapp')
 
-.controller('interestCtrl', function($scope, newsService, storageService, newslistService, $timeout, $state){
-
+.controller('interestCtrl', function($scope, newsService, storageService, newslistService, $timeout, $state, $rootScope){
 
 	var StorageService = storageService;
 

@@ -9,7 +9,7 @@
 angular.module('newsapp')
 
 .controller('allNewsCtrl', function($scope, newslistService, $timeout, storageService, $ionicSlideBoxDelegate, $rootScope){
-
+console.log($rootScope);
 	var NewslistService = newslistService;
 
 	$scope.sliderStatus = true;
@@ -30,7 +30,7 @@ angular.module('newsapp')
 
 	
 	// Update the slider timer
-	$scope.slideTimer = storedSlideTime || 3000;
+	$scope.slideTimer = (storedSlideTime*1000) || 3000;
 	$ionicSlideBoxDelegate.update();
 	
 
@@ -72,6 +72,9 @@ angular.module('newsapp')
 		$ionicSlideBoxDelegate.loop(true);
 
 		$ionicSlideBoxDelegate.update();
+
+		$rootScope.$broadcast('loading:hide');
+
 	});
 
 	// Poll the whole results after the specified time

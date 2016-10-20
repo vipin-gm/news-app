@@ -1,17 +1,25 @@
 <ion-view view-title="Setting">
   	<ion-content>
 		<div class="list">
-			<label class="item item-input item-stacked-label">
+			<!-- <label class="item item-input item-stacked-label">
 				<span class="input-label">Slide Change Time</span>
 				<input type="number" ng-model="timer.slideTimer" placeholder="{{timer.slideTimer}}s">
-			</label>
+			</label> -->
+			<div class="item item-divider">
+			Slide Time: {{timer.slideTimer}}/30 sec
+			</div>
+			<div class="item range range-positive">
+				<i class="icon ion-ios-clock"></i>
+					<input type="range" min="1" max="30" value="{{timer.slideTimer}}" step="1" ng-model="timer.slideTimer">
+				<i class="icon ion-ios-time"></i>
+			</div>
 			<label class="item item-input item-stacked-label">
 				<span class="input-label">Polling Time</span>
-				<input type="number" ng-model="timer.pollTimer" placeholder="{{timer.pollTimer}}">
+				<input type="number" ng-model="timer.pollTimer" placeholder="{{value1}}">
 			</label>
 		</div>
  </ion-content>
 	<div class="bar bar-footer bar-calm">
-		<div class="title" ui-sref="app.allnews" ng-click="updateSettings()">Update Settings</div>
+		<div class="title" ui-sref="app.allnews"  ng-click="updateSettings()">Update Settings</div>
 	</div> 
  </ion-view> 

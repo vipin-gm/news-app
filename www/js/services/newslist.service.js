@@ -1,6 +1,6 @@
 angular.module('newsapp')
 
-.service('newslistService', function(newslistFactory, $timeout){
+.service('newslistService', function(newslistFactory, $timeout, $rootScope){
 
 	var NewslistFactory = newslistFactory;
 
@@ -13,6 +13,8 @@ angular.module('newsapp')
 	var allNewsCollection = [];
 
 	var testArray = [];
+
+	$rootScope.numApiCallMade = 0;
 
 	Service.getPoliticsNews = function() {
 
@@ -279,6 +281,36 @@ angular.module('newsapp')
 	};
 
 	Service.callAllInterestAPI = function(interestList) {
+
+		// Check how many api call to make
+		var numCallToMake = 0;
+		var geography = false;
+
+		$rootScope.numCallToMake = 0;
+		$rootScope.numApiCallMade = 0;
+
+		for (var i=0; i<interestList.length; i++) {
+
+			if (interestList[i].checked) {
+
+				numCallToMake++;
+			}
+
+			if (interestList[i].topic == 'Geography') {
+
+				geography = true;
+			}
+		}
+
+		if (geography) {
+
+			$rootScope.numCallToMake = (((numCallToMake-1)*3) + 2);
+		}
+
+		else {
+
+			$rootScope.numCallToMake = numCallToMake*3;
+		}
 
 		for (var i=0; i<interestList.length; i++) {
 

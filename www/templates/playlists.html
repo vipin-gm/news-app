@@ -16,7 +16,7 @@
 						<p>Source: Financial Times</p>
 					</div>
 					<div class="item item-body row responsive-sm">
-						<img class="full-image col col-33" ng-src="{{news.urlToImage}}">
+						<img class="full-image col col-33" ng-src="{{news.urlToImage}}" ng-if="news.urlToImage">
 						<p class="row">{{news.description}}</p>
 						<p>
 							<!-- <a href="#" class="subdued">Source: {{headlines.latestnewsObj.source == 'the-times-of-india'?'Time Of India':N/A}}</a> -->
