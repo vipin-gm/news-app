@@ -8,7 +8,7 @@
 
 angular.module('newsapp')
 
-.controller('allNewsCtrl', function($scope, newslistService, $timeout, storageService, $ionicSlideBoxDelegate, $rootScope, $cordovaSocialSharing, $cordovaInAppBrowser){
+.controller('allNewsCtrl', function($scope, newslistService, $timeout, storageService, $ionicSlideBoxDelegate, $rootScope, $cordovaSocialSharing, $cordovaInAppBrowser, $cordovaStatusbar){
 
 	var NewslistService = newslistService;
 
@@ -199,7 +199,7 @@ angular.module('newsapp')
     	.then(function(status){
     		// Success
     		$ionicSlideBoxDelegate.$getByHandle('news-viewer').start();
-    		
+
     		console.log("[Success] Updated");
     	}, function(error){
     		// Error
@@ -207,5 +207,22 @@ angular.module('newsapp')
 
     		console.log("[Error] Could not share");
     	})
-	}
+	};
+
+	$scope.onDoubleTap = function() {
+
+		console.log("Doble taped");
+
+		var isVisible = $cordovaStatusbar.isVisible();
+
+		if (isVisible) {
+
+			$cordovaStatusbar.hide();
+		}
+
+		else {
+
+			$cordovaStatusbar.show();	
+		}
+	};
 });
