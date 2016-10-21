@@ -12,7 +12,7 @@
 	  				 	delegate-handle="news-viewer" 
 	  				 	show-pager=false
 	  				 	slide-interval="{{slideTimer}}">
-		  <ion-slide ng-repeat="news in interestNewsList track by $index" ng-if="news.title">
+		  <ion-slide ng-repeat="news in interestNewsList track by $index" ng-if="news.title" ng-click="openNewsInBrowser(news.url)">
 		    <div class="box" >
 		    	<div class="list card">
 					<div class="item item-avatar">

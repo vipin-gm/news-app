@@ -8,8 +8,24 @@
 
 angular.module('newsapp')
 
-.controller('allNewsCtrl', function($scope, newslistService, $timeout, storageService, $ionicSlideBoxDelegate, $rootScope){
+.controller('allNewsCtrl', function($scope, newslistService, $timeout, storageService, $ionicSlideBoxDelegate, $rootScope, $cordovaSocialSharing, $cordovaInAppBrowser){
 
+	// $cordovaSocialSharing
+ //    .shareViaWhatsApp(message, image, link)
+ //    .then(function(result) {
+ //      console.log("done sharing via whatsApp")
+ //    }, function(err) {
+ //      // An error occurred. Show a message to the user
+ //    });
+
+	// $cordovaSocialSharing
+	// .canShareViaEmail()
+	// .then(function(result) {
+	//   // Yes we can
+	//   console.log("YES we can");
+	// }, function(err) {
+	//   // Nope
+	// });
 	var NewslistService = newslistService;
 
 	$scope.sliderStatus = true;
@@ -146,5 +162,24 @@ angular.module('newsapp')
 	}
 
 		$scope.sliderStatus = !$scope.sliderStatus;
+	};
+
+	$scope.openNewsInBrowser = function(url)	{
+
+		var options = {
+			location: 'yes',
+			clearcache: 'yes',
+			toolbar: 'no'
+		};
+
+      	$cordovaInAppBrowser.open(url, '_self', options)
+      	.then(function(event) {
+        	// success
+        console.log("browser opened");
+      	})
+      	.catch(function(event) {
+        	//error
+        console.log("deviceready");
+      })
 	};
 });

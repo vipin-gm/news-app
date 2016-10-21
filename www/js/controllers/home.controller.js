@@ -5,10 +5,10 @@
  * # homeCtrl
  * Controller of the newsapp
  */
- 
+
 angular.module('newsapp') 
 
-.controller('homeCtrl', function($scope, $ionicSlideBoxDelegate, $timeout, newsService, $rootScope) {
+.controller('homeCtrl', function($scope, $ionicSlideBoxDelegate, $timeout, newsService, $rootScope, $cordovaInAppBrowser) {
 
 	$scope.sliderStatus = true;
 
@@ -41,5 +41,24 @@ angular.module('newsapp')
 		}
 
 		$scope.sliderStatus = !$scope.sliderStatus;
+	};
+
+	$scope.openNewsInBrowser = function(url)	{
+
+		var options = {
+			location: 'yes',
+			clearcache: 'yes',
+			toolbar: 'no'
+		};
+
+      	$cordovaInAppBrowser.open(url, '_self', options)
+      	.then(function(event) {
+        	// success
+        console.log("browser opened");
+      	})
+      	.catch(function(event) {
+        	//error
+        console.log("deviceready");
+      })
 	};
 });

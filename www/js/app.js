@@ -4,21 +4,40 @@
 // 'newsapp' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'newsapp.controllers' is found in controllers.js
-angular.module('newsapp', ['ionic'])
+angular.module('newsapp', ['ionic', 'ngCordova'])
 
-.run(function($ionicPlatform, storageService, $rootScope, $ionicLoading, $state) {
+.run(function($ionicPlatform, storageService, $rootScope, $ionicLoading, $state, $cordovaSplashscreen, $timeout, $cordovaInAppBrowser) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-    if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
+    // if (window.cordova && window.cordova.plugins.Keyboard) {
+    //   cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    //   cordova.plugins.Keyboard.disableScroll(true);
 
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
+    // }
+    // if (window.StatusBar) {
+    //   // org.apache.cordova.statusbar required
+    //   StatusBar.styleDefault();
+    // }
+    // $timeout(function(){
+
+    //   $cordovaSplashscreen.hide();
+    //  },2000);
+      // var options = {
+      //   location: 'yes',
+      //   clearcache: 'yes',
+      //   toolbar: 'no'
+      // };
+      // $cordovaInAppBrowser.open('http://ngcordova.com', '_self', options)
+      // .then(function(event) {
+      //   // success
+      //   console.log("browser opened");
+      // })
+      // .catch(function(event) {
+      //   error
+      //   console.log("deviceready");
+      // })
+  
   });
 
 
@@ -43,7 +62,6 @@ angular.module('newsapp', ['ionic'])
   $rootScope.$on('$stateChangeSuccess', function () {
 
     console.log('done');
-    console.log($state.current);
     if($state.current.name === 'app.interest') {
 
       $rootScope.$broadcast('loading:hide');
