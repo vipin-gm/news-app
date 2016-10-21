@@ -12,7 +12,7 @@
 	  				 	delegate-handle="news-viewer" 
 	  				 	show-pager=false
 	  				 	slide-interval="{{slideTimer}}">
-		  <ion-slide ng-repeat="news in interestNewsList track by $index" ng-if="news.title" ng-click="openNewsInBrowser(news.url)">
+		  <ion-slide ng-repeat="news in interestNewsList track by $index" ng-if="news.title">
 		    <div class="box" >
 		    	<div class="list card">
 					<div class="item item-avatar">
@@ -22,12 +22,23 @@
 							<p>Tag: {{news.type}}</p>
 						</div>
 					</div>					
-					<div class="item item-body row responsive-sm" >
-						<img class="full-image col col-33" ng-src="{{news.urlToImage}}" ng-if="news.urlToImage">
-						<p class="col">{{news.description}}
-						<br>
-						<a ng-click="share($event,news.title,news.url)">Source: {{news.source}}</a>
-						</p>
+					<div class="item item-body" >
+						<div class="row responsive-sm">
+							<img class="full-image col col-33" ng-src="{{news.urlToImage}}" ng-if="news.urlToImage">
+							<p class="col col-77">{{news.description}}
+							</p>
+						</div>
+						<div class="row">
+								<p class="col col-25" style="color:#0a9dc7" ng-click="share($event,news.title,news.url)">
+						            <i class = "icon icon ion-share"></i>
+						          	<span>Share</span>
+								</p>
+								<p class="col" style="color:#0a9dc7" ng-click="openNewsInBrowser(news.url)">
+						            <i class = "icon icon ion-ios-glasses-outline"></i>
+						          	<span>Read More</span>
+								</p>
+							</div>
+							<p>Source: {{news.source}}</p>
 						<p>
 							<!-- <a href="#" class="subdued">Source: {{headlines.latestnewsObj.source == 'the-times-of-india'?'Time Of India':N/A}}</a> -->
 							<!-- <a href="#" class="subdued">Source: {{news.source}}</a> -->

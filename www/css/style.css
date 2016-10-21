@@ -8,3 +8,8 @@
 	max-height: 200px !important;
     min-height: 150px !important;
 }
+
+.item-body p {
+	
+    font-size: medium;
+}
