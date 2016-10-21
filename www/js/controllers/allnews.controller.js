@@ -77,7 +77,13 @@ angular.module('newsapp')
 
 		$rootScope.$broadcast('loading:hide');
 
-		$scope.pollSlideTimer();
+		// Setup the poll timer for new results
+		$timeout(function() {
+
+			// Call all the API which are present in interest list
+			NewslistService.callAllInterestAPI(storedInterest);
+
+		}, $scope.pollTimer);
 
 	});
 

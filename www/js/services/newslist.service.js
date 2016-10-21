@@ -14,6 +14,8 @@ angular.module('newsapp')
 
 	var testArray = [];
 
+	var fullNewsCol = [];
+
 	$rootScope.numApiCallMade = 0;
 
 	Service.getPoliticsNews = function() {
@@ -348,7 +350,7 @@ angular.module('newsapp')
 
 	Service.getAllNews = function() {
 
-		allNewsCollection.length = 0;
+		fullNewsCol.length = 0;
 
 		newsCollection = [];
 
@@ -422,7 +424,7 @@ angular.module('newsapp')
 
 		// var newsCollection = News[0].politicsNews1.concat(News[0].politicsNews2,News[0].politicsNews3);
 
-		var fullNewsCol = newsCollection.concat(politicsNewsCol,entertainNewsCol, techNewsCol,sportsNewsCol,financeNewsCol, geographyNewsCol);		
+		fullNewsCol = newsCollection.concat(politicsNewsCol,entertainNewsCol, techNewsCol,sportsNewsCol,financeNewsCol, geographyNewsCol);		
 
 		return fullNewsCol;
 	};
