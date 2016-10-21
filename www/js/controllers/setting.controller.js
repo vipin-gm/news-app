@@ -22,6 +22,10 @@ angular.module('newsapp')
 		pollTimer  : storedPollTimer  || 5
 	};
 
+	/**
+	 * @name updateSettings
+	 * @description Update the changes made to settings
+	 */
 	$scope.updateSettings = function()	{
 
 		StorageService.set('slideTimer', $scope.timer.slideTimer);

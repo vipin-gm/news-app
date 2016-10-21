@@ -163,6 +163,7 @@ angular.module('newsapp')
       	$cordovaInAppBrowser.open(url, '_self', options)
       	.then(function(event) {
         	// success
+        	$ionicSlideBoxDelegate.$getByHandle('news-viewer').stop();
         console.log("browser opened");
       	})
       	.catch(function(event) {
@@ -171,10 +172,14 @@ angular.module('newsapp')
       })
 	};
 
+	/**
+	 * @name share
+	 * @description Share the article with any available platform
+	 */
 	$scope.share = function ($event, title, url) {
 
 		$event.stopPropagation()
 
-    $cordovaSocialSharing.share( title, 'Subject string', null, url);
-}
+    	$cordovaSocialSharing.share( title, 'Subject string', null, url);
+	}
 });

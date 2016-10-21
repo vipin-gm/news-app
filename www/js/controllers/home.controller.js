@@ -8,7 +8,7 @@
 
 angular.module('newsapp') 
 
-.controller('homeCtrl', function($scope, $ionicSlideBoxDelegate, $timeout, newsService, $rootScope, $cordovaInAppBrowser) {
+.controller('homeCtrl', function($scope, $ionicSlideBoxDelegate, $timeout, newsService, $rootScope, $cordovaInAppBrowser, $cordovaSocialSharing) {
 
 	$scope.sliderStatus = true;
 
@@ -65,4 +65,15 @@ angular.module('newsapp')
         console.log("deviceready");
       })
 	};
+
+	/**
+	 * @name share
+	 * @description Share the article with any available platform
+	 */
+	$scope.share = function ($event, title, url) {
+
+		$event.stopPropagation()
+
+    	$cordovaSocialSharing.share( title, 'Subject string', null, url);
+	}
 });

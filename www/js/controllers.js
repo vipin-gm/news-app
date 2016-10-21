@@ -41,7 +41,7 @@ angular.module('newsapp')
   };
 })
 
-.controller('PlaylistsCtrl', function($scope, newsService, $timeout, $ionicSlideBoxDelegate, financialNews, $rootScope, $cordovaInAppBrowser) {
+.controller('PlaylistsCtrl', function($scope, newsService, $timeout, $ionicSlideBoxDelegate, financialNews, $rootScope, $cordovaInAppBrowser, $cordovaSocialSharing) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
@@ -50,7 +50,7 @@ angular.module('newsapp')
     { title: 'Rap', id: 5 },
     { title: 'Cowbell', id: 6 }
   ];
-console.log(financialNews);
+
   $scope.testData = financialNews;
   $scope.sliderStatus = true;
 
@@ -98,6 +98,17 @@ console.log(financialNews);
           //error
         console.log("deviceready");
       })
+  };
+
+  /**
+   * @name share
+   * @description Share the article with any available platform
+   */
+  $scope.share = function ($event, title, url) {
+
+    $event.stopPropagation()
+
+      $cordovaSocialSharing.share( title, 'Subject string', null, url);
   };
 })
 
