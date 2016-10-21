@@ -13,10 +13,18 @@
 					<input type="range" min="1" max="30" value="{{timer.slideTimer}}" step="1" ng-model="timer.slideTimer">
 				<i class="icon ion-ios-time"></i>
 			</div>
-			<label class="item item-input item-stacked-label">
+			<!-- <label class="item item-input item-stacked-label">
 				<span class="input-label">Polling Time</span>
 				<input type="number" ng-model="timer.pollTimer" placeholder="{{value1}}">
-			</label>
+			</label> -->
+			<div class="item item-divider">
+			Slide Time: {{timer.pollTimer}}/30 min
+			</div>
+			<div class="item range range-positive">
+				<i class="icon ion-ios-clock"></i>
+					<input type="range" min="1" max="30" value="{{timer.pollTimer}}" step="1" ng-model="timer.pollTimer">
+				<i class="icon ion-ios-time"></i>
+			</div>
 		</div>
  </ion-content>
 	<div class="bar bar-footer bar-calm">

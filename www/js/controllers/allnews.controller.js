@@ -9,7 +9,7 @@
 angular.module('newsapp')
 
 .controller('allNewsCtrl', function($scope, newslistService, $timeout, storageService, $ionicSlideBoxDelegate, $rootScope){
-console.log($rootScope);
+
 	var NewslistService = newslistService;
 
 	$scope.sliderStatus = true;
@@ -27,6 +27,8 @@ console.log($rootScope);
 
 	// Call all the API which are present in interest list
 	NewslistService.callAllInterestAPI(storedInterest);
+
+	// $scope.progressbar = ngProgressFactory.createInstance();
 
 	
 	// Update the slider timer
@@ -89,12 +91,18 @@ console.log($rootScope);
 	// 	$ionicSlideBoxDelegate.update();
 	// }, $scope.pollTimer);
 
-	$scope.slideHasChanged = function(index) {
+	// $scope.slideHasChanged = function(index) {
+	// 	// $scope.progressbar.reset();
+	// 	$scope.progressbar.start();
 
-		// $ionicSlideBoxDelegate.next([$scope.slideTimer]);
+	// 	var timer = $timeout(function() {
 
-		// console.log(index)
-	}
+	// 		$scope.progressbar.complete();
+
+	// 		$timeout.cancel(timer);
+
+	// 	}, $scope.slideTimer);
+	// }
 
 	/**
 	 * @name toggleSliderStatus

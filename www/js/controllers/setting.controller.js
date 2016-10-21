@@ -18,8 +18,8 @@ angular.module('newsapp')
 
 	$scope.timer = {
 
-		slideTimer : storedSlideTimer || null,
-		pollTimer  : storedPollTimer  || null
+		slideTimer : storedSlideTimer || 5,
+		pollTimer  : storedPollTimer  || 5
 	};
 
 	$scope.updateSettings = function()	{
