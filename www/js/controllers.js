@@ -77,6 +77,10 @@ console.log(financialNews);
     $scope.sliderStatus = !$scope.sliderStatus;
   };
 
+  /**
+   * @name openNewsInBrowser
+   * @description Open the article In App browser
+   */
   $scope.openNewsInBrowser = function(url)  {
 
     var options = {

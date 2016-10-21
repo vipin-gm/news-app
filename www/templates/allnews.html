@@ -26,7 +26,7 @@
 						<img class="full-image col col-33" ng-src="{{news.urlToImage}}" ng-if="news.urlToImage">
 						<p class="col">{{news.description}}
 						<br>
-						<a>Source: {{news.source}}</a>
+						<a ng-click="share($event,news.title,news.url)">Source: {{news.source}}</a>
 						</p>
 						<p>
 							<!-- <a href="#" class="subdued">Source: {{headlines.latestnewsObj.source == 'the-times-of-india'?'Time Of India':N/A}}</a> -->
