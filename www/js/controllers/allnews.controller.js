@@ -37,7 +37,7 @@ angular.module('newsapp')
 	
 
 	// Update the poll timer
-	$scope.pollTimer = storedPollTime || 600000;
+	$scope.pollTimer = (storedPollTime*60*1000) || 300000;
 	
 
 	/**
@@ -77,6 +77,8 @@ angular.module('newsapp')
 
 		$rootScope.$broadcast('loading:hide');
 
+		$scope.pollSlideTimer();
+
 	});
 
 	// Poll the whole results after the specified time
@@ -91,15 +93,32 @@ angular.module('newsapp')
 	// 	$ionicSlideBoxDelegate.update();
 	// }, $scope.pollTimer);
 
+// 	$scope.pollSlideTimer = function() {
+
+// 		$scope.progressbar.start();
+
+// 		// $timeout.cancel( timer );
+
+// 		$timeout(function() {
+
+// 			$scope.progressbar.complete();
+
+// 			$ionicSlideBoxDelegate.next();
+
+// 			$scope.pollSlideTimer();
+// console.log($scope.slideTimer);
+// 		}, $scope.slideTimer);
+// 	}
+
 	// $scope.slideHasChanged = function(index) {
 	// 	// $scope.progressbar.reset();
 	// 	$scope.progressbar.start();
 
 	// 	var timer = $timeout(function() {
 
-	// 		$scope.progressbar.complete();
+	// 		$scope.progressbar.set(100);
 
-	// 		$timeout.cancel(timer);
+	// 		// $timeout.cancel(timer);
 
 	// 	}, $scope.slideTimer);
 	// }

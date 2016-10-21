@@ -23,7 +23,7 @@ angular.module('newsapp')
 	};
 
 	$scope.updateSettings = function()	{
-console.log($scope.timer);
+
 		StorageService.set('slideTimer', $scope.timer.slideTimer);
 
 		StorageService.set('pollTimer', $scope.timer.pollTimer);
