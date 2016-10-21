@@ -190,8 +190,22 @@ angular.module('newsapp')
 	 */
 	$scope.share = function ($event, title, url) {
 
-		$event.stopPropagation()
+		$event.stopPropagation();
 
-    	$cordovaSocialSharing.share( title, 'Subject string', null, url);
+		$ionicSlideBoxDelegate.$getByHandle('news-viewer').stop();
+
+    	$cordovaSocialSharing.share( title, 'Subject string', null, url)
+
+    	.then(function(status){
+    		// Success
+    		$ionicSlideBoxDelegate.$getByHandle('news-viewer').start();
+    		
+    		console.log("[Success] Updated");
+    	}, function(error){
+    		// Error
+    		$ionicSlideBoxDelegate.$getByHandle('news-viewer').start();
+
+    		console.log("[Error] Could not share");
+    	})
 	}
 });
