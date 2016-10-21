@@ -163,7 +163,7 @@ angular.module('newsapp')
       	$cordovaInAppBrowser.open(url, '_self', options)
       	.then(function(event) {
         	// success
-        	$ionicSlideBoxDelegate.$getByHandle('news-viewer').stop();
+        	// $ionicSlideBoxDelegate.$getByHandle('news-viewer').stop();
         console.log("browser opened");
       	})
       	.catch(function(event) {
@@ -171,6 +171,18 @@ angular.module('newsapp')
         console.log("deviceready");
       })
 	};
+
+	// Listens to when an article is opened in APP browser
+	$rootScope.$on('$cordovaInAppBrowser:loadstart', function(e, event){
+
+		$ionicSlideBoxDelegate.$getByHandle('news-viewer').stop();
+	});
+
+	// Listens to when an article is closed/exit from in APP browser
+	$rootScope.$on('$cordovaInAppBrowser:exit', function(e, event){
+
+		$ionicSlideBoxDelegate.$getByHandle('news-viewer').start();
+	});
 
 	/**
 	 * @name share
