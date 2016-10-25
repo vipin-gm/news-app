@@ -1,0 +1,48 @@
+<ion-view view-title="Time Of India">
+	<ion-nav-buttons side="secondary">
+    <div class="buttons">
+      <button class="button button-icon icon" ng-class="!sliderStatus?'ion-ios-play-outline' : 'ion-ios-pause-outline'" ng-click="toggleSliderStatus()">
+      </button>
+    </div>
+  </ion-nav-buttons>
+  	<ion-content>
+	  	<ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true" delegate-handle="news-viewer" show-pager=false>
+		  <ion-slide ng-repeat="news in headlines.latestnewsObj.articles">
+		    <div class="box" on-double-tap="$parent.onDoubleTap()">
+		    	<div class="list card">
+					<div class="item item-avatar">
+						<img ng-src="img/toi-news.png">
+						<div>
+							<h2>{{news.title}}</h2>
+							<p>Source: {{headlines.latestnewsObj.source == 'the-times-of-india'?'Time Of India':'Financial Times'}}</p>
+						</div>
+					</div>					
+					<div class="item item-body" >
+						<div class="row responsive-sm">
+							<img class="full-image col col-33" ng-src="{{news.urlToImage}}" ng-if="news.urlToImage">
+							<p class="col col-77">{{news.description}}
+							</p>
+							<div >
+							<p style="color:#0a9dc7;margin-bottom:6px;" ng-click="share($event,news.title,news.url)">
+					            <i class = "icon icon ion-share" style="font-size:larger;"></i>
+					          	<span>Spread</span>
+							</p>
+							<p style="color:#0a9dc7" ng-click="openNewsInBrowser(news.url)">
+					            <i class = "icon icon ion-ios-glasses" style="font-size:larger;"></i>
+					          	<span>Read More</span>
+							</p>
+						</div>
+						</div>
+							<!-- <p>Source: {{news.source}}</p> -->
+							<!-- <a href="#" class="subdued">Source: {{news.source}}</a> -->
+						<p>
+							<!-- <a href="#" class="subdued">Source: {{headlines.latestnewsObj.source == 'the-times-of-india'?'Time Of India':N/A}}</a> -->
+							<!-- <a href="#" class="subdued">Source: {{news.source}}</a> -->
+						</p>
+					</div>
+				</div>	
+		    </div>
+		  </ion-slide>  
+		</ion-slide-box>
+  </ion-content>
+</ion-view>
