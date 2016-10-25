@@ -7,8 +7,8 @@
   </ion-nav-buttons>
   	<ion-content>
 	  	<ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true" delegate-handle="news-viewer" show-pager=false>
-		  <ion-slide ng-repeat="news in headlines.latestnewsObj.articles"  ng-click="openNewsInBrowser(news.url)">
-		    <div class="box" >
+		  <ion-slide ng-repeat="news in headlines.latestnewsObj.articles">
+		    <div class="box" on-double-tap="$parent.onDoubleTap()">
 		    	<div class="list card">
 					<div class="item item-avatar">
 						<img ng-src="img/toi-news.png">

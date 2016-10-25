@@ -6,7 +6,7 @@
 // 'newsapp.controllers' is found in controllers.js
 angular.module('newsapp', ['ionic', 'ngCordova'])
 
-.run(function($ionicPlatform, storageService, $rootScope, $ionicLoading, $state, $cordovaSplashscreen, $timeout, $cordovaInAppBrowser) {
+.run(function($ionicPlatform, storageService, $rootScope, $ionicLoading, $state, $cordovaSplashscreen, $timeout, $cordovaInAppBrowser, $cordovaStatusbar) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,24 +19,7 @@ angular.module('newsapp', ['ionic', 'ngCordova'])
     //   // org.apache.cordova.statusbar required
     //   StatusBar.styleDefault();
     // }
-    // $timeout(function(){
-
-    //   $cordovaSplashscreen.hide();
-    //  },2000);
-      // var options = {
-      //   location: 'yes',
-      //   clearcache: 'yes',
-      //   toolbar: 'no'
-      // };
-      // $cordovaInAppBrowser.open('http://ngcordova.com', '_self', options)
-      // .then(function(event) {
-      //   // success
-      //   console.log("browser opened");
-      // })
-      // .catch(function(event) {
-      //   error
-      //   console.log("deviceready");
-      // })
+     $cordovaStatusbar.hide();
   
   });
 
@@ -65,11 +48,18 @@ angular.module('newsapp', ['ionic', 'ngCordova'])
     if($state.current.name === 'app.interest') {
 
       $rootScope.$broadcast('loading:hide');
+      window.plugins.insomnia.allowSleepAgain();
     }
 
     if ($state.current.name === 'app.setting' ) {
 
         $rootScope.$broadcast('loading:hide');
+        window.plugins.insomnia.allowSleepAgain();
+    }
+
+    if ($state.current.name === 'app.home' || 'app.allnews' || 'app.playlists') {
+
+      window.plugins.insomnia.keepAwake();
     }
   });
 

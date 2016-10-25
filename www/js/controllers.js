@@ -1,6 +1,6 @@
 angular.module('newsapp')
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, newsService) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, newsService, $cordovaStatusbar) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -38,6 +38,23 @@ angular.module('newsapp')
     $timeout(function() {
       $scope.closeLogin();
     }, 1000);
+  };
+
+  $scope.onDoubleTap = function() {
+
+    console.log("Doble taped");
+
+    var isVisible = $cordovaStatusbar.isVisible();
+
+    if (isVisible) {
+
+      $cordovaStatusbar.hide();
+    }
+
+    else {
+
+      $cordovaStatusbar.show(); 
+    }
   };
 })
 

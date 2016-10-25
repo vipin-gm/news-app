@@ -209,20 +209,20 @@ angular.module('newsapp')
     	})
 	};
 
-	$scope.onDoubleTap = function() {
+	// $scope.onDoubleTap = function() {
 
-		console.log("Doble taped");
+	// 	console.log("Doble taped");
 
-		var isVisible = $cordovaStatusbar.isVisible();
+	// 	var isVisible = $cordovaStatusbar.isVisible();
 
-		if (isVisible) {
+	// 	if (isVisible) {
 
-			$cordovaStatusbar.hide();
-		}
+	// 		$cordovaStatusbar.hide();
+	// 	}
 
-		else {
+	// 	else {
 
-			$cordovaStatusbar.show();	
-		}
-	};
+	// 		$cordovaStatusbar.show();	
+	// 	}
+	// };
 });
