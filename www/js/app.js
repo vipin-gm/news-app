@@ -96,7 +96,7 @@ angular.module('newsapp', ['ionic', 'ngCordova'])
   })
 
   .state('app.allnews', {
-      // cache:false,
+      cache:false,
       url: '/allnews',
       views: {
         'menuContent': {
