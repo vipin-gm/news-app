@@ -8,7 +8,7 @@
 
 angular.module('newsapp') 
 
-.controller('homeCtrl', function($scope, $ionicSlideBoxDelegate, $timeout, newsService, $rootScope, $cordovaInAppBrowser, $cordovaSocialSharing) {
+.controller('toiCtrl', function($scope, $ionicSlideBoxDelegate, $timeout, newsService, $rootScope, $cordovaInAppBrowser, $cordovaSocialSharing) {
 
 	$scope.sliderStatus = true;
 
@@ -75,5 +75,5 @@ angular.module('newsapp')
 		$event.stopPropagation()
 
     	$cordovaSocialSharing.share( title, 'Subject string', null, url);
-	}
+	};
 });

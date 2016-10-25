@@ -149,13 +149,13 @@ angular.module('newsapp', ['ionic', 'ngCordova'])
     }
   })
 
-  .state('app.home', {
-    // cache:false,
-    url: '/home',
+  .state('app.toi', {
+    cache:false,
+    url: '/toi',
     views: {
       'menuContent': {
-        templateUrl: 'templates/home.html',
-        controller: 'homeCtrl'
+        templateUrl: 'templates/toi.html',
+        controller: 'toiCtrl'
       }
     },
     resolve: {
