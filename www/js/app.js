@@ -19,7 +19,7 @@ angular.module('newsapp', ['ionic', 'ngCordova'])
     //   // org.apache.cordova.statusbar required
     //   StatusBar.styleDefault();
     // }
-     $cordovaStatusbar.hide();
+    $cordovaStatusbar.hide();
   
   });
 
@@ -117,13 +117,13 @@ angular.module('newsapp', ['ionic', 'ngCordova'])
     }
   })
 
-  .state('app.playlists', {
-    url: '/playlists',
-    // cache: false,
+  .state('app.ft', {
+    url: '/ft',
+    cache: false,
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlists.html',
-        controller: 'PlaylistsCtrl'
+        templateUrl: 'templates/ft.html',
+        controller: 'ftCtrl'
       }
     },
     resolve: {
@@ -137,16 +137,6 @@ angular.module('newsapp', ['ionic', 'ngCordova'])
       return NewsService;
     }]
   }
-  })
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
-      }
-    }
   })
 
   .state('app.toi', {
@@ -170,28 +160,6 @@ angular.module('newsapp', ['ionic', 'ngCordova'])
       }]
     }
   })
-
-  .state('app.financial',{
-    // cache:false,
-    url: '/ftnews',
-    views: {
-      'menuContent': {
-        templateUrl: '/templates/financial.html',
-        controller: 'ftCtrl'
-      }
-    },
-    resolve: {
-
-      financialNews: ['newsService', function(newsService) {
-
-        var NewsService = newsService;
-
-        NewsService.getFinalcialTimesNews();
-
-        return NewsService;
-      }]
-    }
-  });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/interest');

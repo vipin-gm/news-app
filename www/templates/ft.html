@@ -20,28 +20,22 @@
 							<img class="full-image col col-33" ng-src="{{news.urlToImage}}" ng-if="news.urlToImage">
 							<p class="col col-77">{{news.description}}
 							</p>
-							<div >
-							<p style="color:#0a9dc7;margin-bottom:6px;" ng-click="share($event,news.title,news.url)">
-					            <i class = "icon icon ion-share" style="font-size:larger;"></i>
-					          	<span>Spread</span>
-							</p>
-							<p style="color:#0a9dc7" ng-click="openNewsInBrowser(news.url)">
-					            <i class = "icon icon ion-ios-glasses" style="font-size:larger;"></i>
-					          	<span>Read More</span>
-							</p>
+								<div>
+									<p style="color:#0a9dc7;margin-bottom:6px;" ng-click="share($event,news.title,news.url)">
+							            <i class = "icon icon ion-share" style="font-size:larger;"></i>
+							          	<span>Spread</span>
+									</p>
+									<p style="color:#0a9dc7" ng-click="openNewsInBrowser(news.url)">
+							            <i class = "icon icon ion-ios-glasses" style="font-size:larger;"></i>
+							          	<span>Read More</span>
+									</p>
+								</div>
+							</div>
 						</div>
-						</div>
-							<!-- <p>Source: {{news.source}}</p> -->
-							<!-- <a href="#" class="subdued">Source: {{news.source}}</a> -->
-						<p>
-							<!-- <a href="#" class="subdued">Source: {{headlines.latestnewsObj.source == 'the-times-of-india'?'Time Of India':N/A}}</a> -->
-							<!-- <a href="#" class="subdued">Source: {{news.source}}</a> -->
-						</p>
-					</div>
-				</div>	
-		    </div>
-		  </ion-slide>  
+					</div>	
+		    	</div>
+		  	</ion-slide>  
 		</ion-slide-box>
-  </ion-content>
+  	</ion-content>
 </ion-view>
 
